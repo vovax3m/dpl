@@ -1,0 +1,7 @@
+#!/bin/sh
+db=$1
+data=`date +"%F"`
+mkdir -p /dumps/$db
+mkdir -p /dumps/$db/$data
+mysqldump -udeploy -pdeploygfhjkm $db > /dumps/$db/$data/$db.$data.sql
+echo `ls /dumps/$db/$data/ | grep $db.$data.sql`

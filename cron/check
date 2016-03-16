@@ -1,0 +1,12 @@
+#!/bin/sh
+cd /var/www/html/deploy/cron
+x=`cat flag`
+
+if [ "$x" == 'true' ]
+then
+    echo 'reloading';
+    #service httpd restart
+    /usr/sbin/apachectl restart
+    echo '' > flag
+    echo `date +"%F %T"` ' reloading' >> reload.log
+fi

@@ -1,0 +1,6 @@
+#!/bin/sh
+#!/bin/sh
+db=$1
+#remove conf  file in vhost
+rm -f /etc/httpd/vhost.d/$db.conf
+echo 'ok'

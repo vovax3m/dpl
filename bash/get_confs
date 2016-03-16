@@ -1,0 +1,24 @@
+#!/bin/sh
+db=$1
+data=`date +"%F"`
+#check files
+mkdir -p /dumps/$db
+mkdir -p /dumps/$db/$data
+ch1=`cat /var/www/html/$db/application/config/config.php`
+ch1_l=${#ch1}
+#echo "длина config=" $ch1_l
+if [ "$ch1_l" > "0" ]
+then
+    cp /var/www/html/$db/application/config/config.php /dumps/$db/$data/config.php
+fi
+
+
+ch2=`cat /var/www/html/$db/application/config/database.php`
+ch2_l=${#ch2}
+#echo "длина config=" $ch2_l
+if [ "$ch2_l" > "0" ]
+then
+    cp /var/www/html/$db/application/config/database.php /dumps/$db/$data/database.php
+fi
+# возвращаем содержимое папки
+ls /dumps/$db
